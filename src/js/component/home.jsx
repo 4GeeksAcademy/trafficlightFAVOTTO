@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+export function TrafficLight() {
+	const [glowingColor, setGlowingColor] = useState(null);
 
-//create your first component
-const Home = () => {
+	
+	const randomGlow = () => {
+		const colors = ["red", "yellow", "green"];
+		const randomColor = colors[Math.floor(Math.random() * colors.length)];
+		setGlowingColor(randomColor);
+	};
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="traffic-light-form">
+			<div className="traffic-light">
+				<div
+					className={`light red${glowingColor === "red" ? " glow" : ""}`}></div>
+				<div
+					className={`light yellow${glowingColor === "yellow" ? " glow" : ""}`}></div>
+				<div
+					className={`light green${glowingColor === "green" ? " glow" : ""}`}></div>
+			</div>
+			<div className="vertical-line"></div>
+			<button onClick={randomGlow}>Encender Color</button>
 		</div>
 	);
-};
+}
 
-export default Home;
+export default TrafficLight;
+
+
+
