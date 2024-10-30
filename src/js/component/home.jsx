@@ -3,30 +3,34 @@ import React, { useState } from "react";
 export function TrafficLight() {
 	const [glowingColor, setGlowingColor] = useState(null);
 
-	
-	const randomGlow = () => {
-		const colors = ["red", "yellow", "green"];
-		const randomColor = colors[Math.floor(Math.random() * colors.length)];
-		setGlowingColor(randomColor);
+	const handleGlow = (color) => {
+		setGlowingColor(color);
 	};
 
 	return (
 		<div className="traffic-light-form">
 			<div className="traffic-light">
 				<div
-					className={`light red${glowingColor === "red" ? " glow" : ""}`}></div>
+					className={`light red${glowingColor === "red" ? " glow" : ""}`}
+					onClick={() => handleGlow("red")}
+				></div>
 				<div
-					className={`light yellow${glowingColor === "yellow" ? " glow" : ""}`}></div>
+					className={`light yellow${glowingColor === "yellow" ? " glow" : ""}`}
+					onClick={() => handleGlow("yellow")}
+				></div>
 				<div
-					className={`light green${glowingColor === "green" ? " glow" : ""}`}></div>
+					className={`light green${glowingColor === "green" ? " glow" : ""}`}
+					onClick={() => handleGlow("green")}
+				></div>
 			</div>
 			<div className="vertical-line"></div>
-			<button onClick={randomGlow}>Encender Color</button>
+			<div className="horizontal-line"></div>
 		</div>
 	);
 }
 
 export default TrafficLight;
+
 
 
 
